@@ -1,0 +1,168 @@
+/* Dashboard Styles */
+
+/* Page Header */
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+/* Stats Cards */
+.border-left-primary {
+  border-left: 4px solid var(--primary-color);
+}
+
+.border-left-success {
+  border-left: 4px solid var(--success-color);
+}
+
+.border-left-info {
+  border-left: 4px solid var(--info-color);
+}
+
+.border-left-warning {
+  border-left: 4px solid var(--warning-color);
+}
+
+.card .text-xs {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+.card .fa-2x {
+  font-size: 2rem;
+  color: #dddfeb;
+}
+
+/* Charts */
+.chart-area, .chart-pie {
+  position: relative;
+  margin: auto;
+}
+
+.chart-placeholder {
+  border-radius: var(--border-radius);
+}
+
+.dark-mode .chart-placeholder {
+  background-color: var(--secondary-bg) !important;
+}
+
+/* Legend */
+.legend {
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+}
+
+/* Recent Articles Table */
+.recent-articles {
+  margin-bottom: 0;
+}
+
+.recent-articles th,
+.recent-articles td {
+  white-space: nowrap;
+  padding: 0.75rem 1rem;
+}
+
+.dark-mode .table {
+  color: var(--text-color);
+}
+
+.dark-mode .table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* Activity Timeline */
+.activity-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.activity-timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #e3e6f0;
+  z-index: 0;
+}
+
+.dark-mode .activity-timeline::before {
+  background-color: var(--border-color);
+}
+
+.activity-item {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.activity-item:last-child {
+  padding-bottom: 0;
+}
+
+.activity-icon {
+  position: absolute;
+  left: -2rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  color: #fff;
+  z-index: 2;
+}
+
+.activity-content {
+  padding-left: 0.5rem;
+}
+
+.activity-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.activity-content p {
+  margin-bottom: 0.25rem;
+  color: var(--secondary-color);
+}
+
+.dark-mode .activity-content p {
+  color: #b7b9cc;
+}
+
+.activity-time {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+}
+
+/* Badge Styling */
+.badge {
+  padding: 0.4em 0.7em;
+  font-size: 75%;
+  font-weight: 600;
+  border-radius: 0.3rem;
+}
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a !important;
+}
+
+
+/* FaCog Import Fix */
+@import "~react-icons/fa";
