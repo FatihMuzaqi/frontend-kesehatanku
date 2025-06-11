@@ -102,7 +102,6 @@ const CreateArticle = () => {
                     <Editor apiKey="nabavynd8gelri80e64wb0svcm7dmtqpwyuuf6jiunqr9azj"
                       onInit={(evt, editor) => (editorRef.current = editor)}
                       initialValue={getArticle !== null ? getArticle.isi : null}
-                      tinymceScriptSrc='/tinymce/tinymce.min.js'
                       init={{
                         height: 500,
                         plugins: [
