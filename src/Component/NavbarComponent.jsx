@@ -124,9 +124,9 @@ const NavbarComponent = () => {
               id="cek-kesehatan-dropdown"
             >
               {categoires?.map((value) =>
-                kategori.nama_kategori.toLowerCase() === "allergy" &&
-                kategori.nama_kategori.toLowerCase() === "diabetes" &&
-                kategori.nama_kategori.toLowerCase() === "malaria" ? (
+                value.nama_kategori.toLowerCase() === "allergy" &&
+                value.nama_kategori.toLowerCase() === "diabetes" &&
+                value.nama_kategori.toLowerCase() === "malaria" ? (
                   <NavDropdown.Item
                     onClick={() => handleSelect(value.id)}
                     key={value.id}
