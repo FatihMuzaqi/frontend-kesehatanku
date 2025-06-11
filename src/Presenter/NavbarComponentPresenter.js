@@ -14,6 +14,7 @@ export default class NavbarComponentPresenter {
             const res = await this.#model.getKategori();
             this.#view.setCategories(res.data);
             const filterData = res.data.filter(item => item.nama_kategori.toLowerCase() === "allergy" && item.nama_kategori.toLowerCase() === "diabetes" && item.nama_kategori.toLowerCase() === "malaria");
+            console.log(filterData);
             this.#view.setFilterCategories(filterData);
         } catch (err) {
             console.error(err);
