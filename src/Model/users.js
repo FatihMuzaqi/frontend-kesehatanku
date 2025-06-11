@@ -10,7 +10,7 @@ class Users {
         return res.data;
     }
     static async Logout() {
-        const res = await instance.get('/logout', {
+        const res = await instance.post('/logout', {
             withCredentials: true
         });
         return res.data;
