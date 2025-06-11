@@ -1,45 +1,44 @@
-
 export default class NavbarComponentPresenter {
+  #model;
+  #view;
 
-    #model;
-    #view;
+  constructor({ model, view }) {
+    this.#model = model;
+    this.#view = view;
+  }
 
-    constructor({ model, view }) {
-        this.#model = model;
-        this.#view = view;
+  async getKategori() {
+    try {
+      const res = await this.#model.getKategori();
+      this.#view.setCategories(res.data);
+      const filterData = res.data.filter((item) =>
+        ["Allergy", "Diabetes", "Malaria"].includes(item.nama_kategori)
+      );
+      console.log(filterData);
+      this.#view.setFilterCategories(filterData);
+    } catch (err) {
+      console.error(err);
     }
+  }
 
-    async getKategori() {
-        try {
-            const res = await this.#model.getKategori();
-            this.#view.setCategories(res.data);
-            const filterData = res.data.filter(item => item.nama_kategori.toLowerCase() === "allergy" && item.nama_kategori.toLowerCase() === "diabetes" && item.nama_kategori.toLowerCase() === "malaria");
-            console.log(filterData);
-            this.#view.setFilterCategories(filterData);
-        } catch (err) {
-            console.error(err);
-        }
+  async getUser() {
+    try {
+      const res = await this.#model.getUser();
+      this.#view.setUser(res.user);
+    } catch {
+      this.#view.setUser(null);
     }
+  }
 
-    async getUser() {
-        try {
-            const res = await this.#model.getUser();
-            this.#view.setUser(res.user);
-        } catch {
-            this.#view.setUser(null);
-        }
+  async Logout() {
+    try {
+      if (confirm("Apakah anda yakin ingin Logout?")) {
+        const res = await this.#model.Logout();
+        alert(res.message);
+        this.#view.navigate("/login");
+      }
+    } catch (err) {
+      console.error(err);
     }
-
-    async Logout() {
-        try {
-            if (confirm("Apakah anda yakin ingin Logout?")) {
-                const res = await this.#model.Logout();
-                alert(res.message);
-                this.#view.navigate("/login");
-            }
-        } catch (err) {
-            console.error(err);
-        }
-    }
-
+  }
 }
