@@ -29,14 +29,13 @@ const NavbarComponent = () => {
   const [categoires, setCategories] = useState(null);
   const navigate = useNavigate();
 
-
   const presenter = new NavbarComponentPresenter({
     model: Dashboard,
     view: {
       setCategories: setCategories,
       setUser: setUser,
-      navigate: navigate
-    }
+      navigate: navigate,
+    },
   });
 
   async function handleLogout() {
@@ -59,9 +58,21 @@ const NavbarComponent = () => {
     <Navbar bg="white" expand="lg" className="py-3 shadow-sm sticky-top">
       <Container fluid className="me-3 mx-3">
         <Navbar.Brand href="/" className="d-flex align-items-center">
-          <img className="img-fluid d-block" width="100" style={{ maxWidth: '80px' }} src="/image/LogoHealth.png" alt="LogoKesehatanKu" />
+          <img
+            className="img-fluid d-block"
+            width="100"
+            style={{ maxWidth: "80px" }}
+            src="/image/LogoHealth.png"
+            alt="LogoKesehatanKu"
+          />
           <span>
-            <img className="img-fluid d-block" width="100" style={{ maxWidth: '80px' }} src="/image/kementrian-sehat.webp" alt="LogoKementrian" />
+            <img
+              className="img-fluid d-block"
+              width="100"
+              style={{ maxWidth: "80px" }}
+              src="/image/kementrian-sehat.webp"
+              alt="LogoKementrian"
+            />
           </span>
         </Navbar.Brand>
 
@@ -69,12 +80,15 @@ const NavbarComponent = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto d-flex align-items-center">
-            <NavDropdown title={
-              <>
-                <FaHeartbeat className="me-1" />
-                Kategori Kesehatan
-              </>
-            } id="nav-dropdown">
+            <NavDropdown
+              title={
+                <>
+                  <FaHeartbeat className="me-1" />
+                  Kategori Kesehatan
+                </>
+              }
+              id="nav-dropdown"
+            >
               {categoires ? (
                 categoires.map((kategori) => (
                   <NavDropdown.Item
@@ -109,11 +123,20 @@ const NavbarComponent = () => {
               }
               id="cek-kesehatan-dropdown"
             >
-              {categoires?.map(value => (
-                <NavDropdown.Item onClick={() => handleSelect(value.id)} key={value.id}>
-                  {value.nama_kategori}
-                </NavDropdown.Item>
-              )).slice(0, 3)}
+              {categoires?.map((value) =>
+                kategori.nama_kategori.toLowerCase() === "allergy" &&
+                kategori.nama_kategori.toLowerCase() === "diabetes" &&
+                kategori.nama_kategori.toLowerCase() === "malaria" ? (
+                  <NavDropdown.Item
+                    onClick={() => handleSelect(value.id)}
+                    key={value.id}
+                  >
+                    {value.nama_kategori}
+                  </NavDropdown.Item>
+                ) : (
+                  <></>
+                )
+              )}
             </NavDropdown>
 
             <Nav.Link href="/kontak" className="mx-2 d-flex align-items-center">
@@ -121,7 +144,10 @@ const NavbarComponent = () => {
               <span>Kontak</span>
             </Nav.Link>
 
-            <Nav.Link href="/konsultasi-penyakit" className="mx-2 d-flex align-items-center">
+            <Nav.Link
+              href="/konsultasi-penyakit"
+              className="mx-2 d-flex align-items-center"
+            >
               <FaComments className="me-1" />
               <span>Konsultasi Kesehatan</span>
             </Nav.Link>
@@ -140,13 +166,13 @@ const NavbarComponent = () => {
                 </Button>
               </InputGroup>
             </Form>
-            {user ? 
+            {user ? (
               <Dropdown align="end" className="user-dropdown">
                 <Dropdown.Toggle variant="link" id="user-dropdown">
-                  <img 
-                    src="/image/profile-default.jpg" 
-                    alt="User" 
-                    className="user-avatar" 
+                  <img
+                    src="/image/profile-default.jpg"
+                    alt="User"
+                    className="user-avatar"
                   />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
@@ -157,14 +183,16 @@ const NavbarComponent = () => {
                     <FaSignOutAlt className="me-2" /> Keluar
                   </Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown> :
+              </Dropdown>
+            ) : (
               <Button
                 variant="primary"
                 href="/login"
                 className="border text-white"
               >
                 Masuk
-              </Button>}
+              </Button>
+            )}
           </div>
         </Navbar.Collapse>
       </Container>
