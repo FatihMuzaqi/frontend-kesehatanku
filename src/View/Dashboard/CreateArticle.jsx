@@ -99,7 +99,7 @@ const CreateArticle = () => {
                 <Form.Group className="mb-3">
                   <Form.Label>Konten Artikel</Form.Label>
                   <div className="editor-container border rounded p-2">
-                    <Editor apiKey="hpzq2xow74fx45mo3r57jatzd75rrj63fb2sl8dhsuf3tc1c"
+                    <Editor apiKey="nabavynd8gelri80e64wb0svcm7dmtqpwyuuf6jiunqr9azj"
                       onInit={(evt, editor) => (editorRef.current = editor)}
                       initialValue={getArticle !== null ? getArticle.isi : null}
                       init={{
