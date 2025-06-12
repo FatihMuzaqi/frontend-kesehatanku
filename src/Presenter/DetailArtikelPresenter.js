@@ -119,7 +119,7 @@ export class ArticlePresenter {
   async handleBookmark(id, value) {
     try {
       const data = await database.findArtikel(id);
-      if (data) {
+      if (!data) {
         await this.simpanartikel(id, value);
         return this.view.updateBookmarkStatus(true);
       }
