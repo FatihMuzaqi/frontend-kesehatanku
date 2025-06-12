@@ -28,6 +28,7 @@ import SetupRoleUser from "./SetupRoleUser";
 import Error404 from "./View/Errors/404";
 import KesehatanList from "./View/Dashboard/KesehatanList";
 import KonsultasiList from "./View/Dashboard/KonsultasiList";
+import ArtikelTersimpan from "./View/Pages/ArtikelTersimpan";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Route path="/kategori/:id" element={<KategoriPage />} />
       <Route path="/cek-kesehatan/:id" element={<CekKesehatan />} />
       <Route path="/konsultasi-penyakit" element={<Konsultasi />} />
+      <Route path="/artikel-tersimpan" element={<ArtikelTersimpan />} />
       {/* Auth */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

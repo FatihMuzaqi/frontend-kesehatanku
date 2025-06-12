@@ -45,6 +45,10 @@ const NavbarComponent = () => {
     await presenter.Logout();
   }
 
+  function handleArtikelTersimpan() {
+    navigate("/artikel-tersimpan");
+  }
+
   useEffect(() => {
     presenter.getKategori();
     presenter.getUser();
@@ -155,6 +159,9 @@ const NavbarComponent = () => {
                   <div className="user-info">
                     <h6>{user?.name}</h6>
                   </div>
+                  <Dropdown.Item onClick={handleArtikelTersimpan}>
+                    <FaSignOutAlt className="me-2" /> Artikel Tersimpan
+                  </Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>
                     <FaSignOutAlt className="me-2" /> Keluar
                   </Dropdown.Item>
