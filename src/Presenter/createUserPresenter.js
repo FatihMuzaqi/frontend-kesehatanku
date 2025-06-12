@@ -23,6 +23,10 @@ export default class CreateUserPresenter {
         this.#view.setLoading(true);
         try {
             const res = await this.#model.createUser(name, email, password);
+            if (res.status === "success") {
+                alert(res.msg);
+                this.#view.navigate("/dashboard/users");
+            }
             console.log("Berhasil Membuat Users, status: ", res.status);
         } catch (err) {
             console.error(err);

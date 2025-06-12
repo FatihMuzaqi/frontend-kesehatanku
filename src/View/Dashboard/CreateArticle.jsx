@@ -128,25 +128,6 @@ const CreateArticle = () => {
                   </div>
                 </Form.Group>
 
-                <Row>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Status</Form.Label>
-                      <Form.Select onChange={(e) => setStatus(e.target.value)} required={editId ? false : true}>
-                        <option value="">Pilih Status</option>
-                        <option value="publish">Publish</option>
-                        <option value="draft">Draft</option>
-                      </Form.Select>
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Tanggal Publikasi</Form.Label>
-                      <Form.Control type="datetime-local" />
-                    </Form.Group>
-                  </Col>
-                </Row>
-
                 <div className="mt-4 d-flex justify-content-end">
                   <Button variant="secondary" className="me-2">
                     <FaTimes className="me-1" /> Batal

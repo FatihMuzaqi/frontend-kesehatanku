@@ -1,4 +1,5 @@
 import { ArticleModel } from '../Model/ArtikelDetail';
+import database from '../Untils/database';
 
 export class ArticlePresenter {
   constructor({ view }) {
@@ -101,9 +102,33 @@ export class ArticlePresenter {
     }
   }
 
-  handleBookmark(currentStatus) {
-    const newStatus = !currentStatus;
-    this.view.updateBookmarkStatus(newStatus);
+  async handleBookmark(id, value) {
+    try {
+      if (database.findArtikel(id)) {
+        this.simpanartikel(id, value);
+        return this.view.updateBookmarkStatus(true);
+      }
+      this.deleteArtikel(id);
+      return this.view.updateBookmarkStatus(false);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async simpanartikel(id, value) {
+    try {
+      const res = database.createArtikel(id, value);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async deleteArtikel(id) {
+    try {
+      const res = database.deleteArtikel(id);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async handleShare() {

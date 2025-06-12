@@ -23,6 +23,7 @@ export default class ArticlePresenter {
             const res = await this.#model.createArticle(data);
             alert(res.status);
             if (res.status === "success") {
+                alert(res.msg);
                 this.#view.navigate("/dashboard/health-info");
             }
             // this.#view.setMessage(res);
@@ -49,6 +50,7 @@ export default class ArticlePresenter {
                 return;
             }
             const res = await this.#model.deleteArticle(id);
+            alert(res.msg);
             await this.getArticle();
         } catch (err) {
             console.error(err);
@@ -67,6 +69,7 @@ export default class ArticlePresenter {
             const res = await this.#model.updateArticle(id, data);
             alert(res.status);
             if (res.status === "success") {
+                alert(res.msg);
                 this.#view.navigate("/dashboard/health-info");
             }
             // this.#view.setMessage(res);
