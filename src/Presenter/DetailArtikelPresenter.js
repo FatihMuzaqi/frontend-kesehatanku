@@ -107,7 +107,7 @@ export class ArticlePresenter {
     try {
       const res = await database.findArtikel(id);
       console.log(res);
-      if (res.result) {
+      if (res) {
         return this.view.updateBookmarkStatus(true);
       }
       this.view.updateBookmarkStatus(false);
@@ -119,7 +119,7 @@ export class ArticlePresenter {
   async handleBookmark(id, value) {
     try {
       const data = await database.findArtikel(id);
-      if (data.result) {
+      if (data) {
         this.simpanartikel(id, value);
         return this.view.updateBookmarkStatus(true);
       }
