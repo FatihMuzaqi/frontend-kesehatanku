@@ -19,6 +19,9 @@ const database  = {
     },
     async findArtikel(id) {
         return await (await dbPromise).get(OBJECT_STORE_NAME, id);
+    },
+    async getAllArtikel() {
+        return await (await dbPromise).getAll(OBJECT_STORE_NAME);
     }
 }
 

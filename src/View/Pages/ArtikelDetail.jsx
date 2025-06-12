@@ -65,7 +65,7 @@ const ArticleDetailPage = () => {
   };
 
   const handleBookmark = () => {
-    presenter.handleBookmark(artikel.id, artikel);
+    presenter.handleBookmark(artikel.id, artikel, user);
   };
 
   const handleShare = () => {

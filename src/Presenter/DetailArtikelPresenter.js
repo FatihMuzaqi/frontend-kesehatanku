@@ -116,7 +116,10 @@ export class ArticlePresenter {
     }
   }
 
-  async handleBookmark(id, value) {
+  async handleBookmark(id, value, user) {
+    if (!user) {
+      return alert("Anda belum login");
+    }
     try {
       const data = await database.findArtikel(id);
       if (!data) {
@@ -209,5 +212,14 @@ export class ArticlePresenter {
       }
     }
     return message;
+  }
+
+  async getAllArtikel() {
+    try {
+      const res = await database.getAllArtikel();
+      this.view.setArtikel(res);
+    }catch (err) {
+      console.error(err);
+    }
   }
 }
