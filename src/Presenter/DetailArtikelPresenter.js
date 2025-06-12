@@ -105,7 +105,7 @@ export class ArticlePresenter {
   async getArtikelFromIdb(id) {
     if (!id) return;
     try {
-      const res = database.findArtikel(id);
+      const res = await database.findArtikel(id);
       console.log(res);
       if (res.result) {
         return this.view.updateBookmarkStatus(true);
@@ -118,7 +118,7 @@ export class ArticlePresenter {
 
   async handleBookmark(id, value) {
     try {
-      const data = database.findArtikel(id);
+      const data = await database.findArtikel(id);
       if (data.result) {
         this.simpanartikel(id, value);
         return this.view.updateBookmarkStatus(true);
@@ -132,7 +132,7 @@ export class ArticlePresenter {
 
   async simpanartikel(id, value) {
     try {
-      const res = database.createArtikel(id, value);
+      const res = await database.createArtikel(id, value);
     } catch (err) {
       console.error(err);
     }
@@ -140,7 +140,7 @@ export class ArticlePresenter {
 
   async deleteArtikel(id) {
     try {
-      const res = database.deleteArtikel(id);
+      const res = await database.deleteArtikel(id);
     } catch (err) {
       console.error(err);
     }
