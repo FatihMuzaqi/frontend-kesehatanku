@@ -12,13 +12,13 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
 
 const database  = {
     async createArtikel(id, value) {
-        await (await dbPromise).put(OBJECT_STORE_NAME, value, id);
+        return await (await dbPromise).put(OBJECT_STORE_NAME, value, id);
     },
     async deleteArtikel(id) {
-        await (await dbPromise).delete(OBJECT_STORE_NAME, id);
+        return await (await dbPromise).delete(OBJECT_STORE_NAME, id);
     },
     async findArtikel(id) {
-        await (await dbPromise).get(OBJECT_STORE_NAME, id);
+        return await (await dbPromise).get(OBJECT_STORE_NAME, id);
     }
 }
 

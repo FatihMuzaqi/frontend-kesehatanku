@@ -120,10 +120,10 @@ export class ArticlePresenter {
     try {
       const data = await database.findArtikel(id);
       if (data) {
-        this.simpanartikel(id, value);
+        await this.simpanartikel(id, value);
         return this.view.updateBookmarkStatus(true);
       }
-      this.deleteArtikel(id);
+      await this.deleteArtikel(id);
       return this.view.updateBookmarkStatus(false);
     } catch (err) {
       console.error(err);
