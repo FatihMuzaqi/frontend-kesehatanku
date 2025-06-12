@@ -105,7 +105,7 @@ export class ArticlePresenter {
   async getArtikelFromIdb(id) {
     if (!id) return;
     try {
-      const res = await database.findArtikel(id);
+      const res = database.findArtikel(id);
       console.log(res);
       if (res) {
         return this.view.updateBookmarkStatus(true);
@@ -118,7 +118,7 @@ export class ArticlePresenter {
 
   async handleBookmark(id, value) {
     try {
-      const data = await database.findArtikel(id);
+      const data = database.findArtikel(id);
       if (data) {
         this.simpanartikel(id, value);
         return this.view.updateBookmarkStatus(true);
