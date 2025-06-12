@@ -53,7 +53,7 @@ const ArticleDetailPage = () => {
     presenter.getUser(id);
     presenter.loadArticleData(id);
     presenter.getLikes(id);
-    presenter.getArtikelFromIdb(artikel.id);
+    presenter.getArtikelFromIdb(id);
   }, []);
 
   const handleLike = async (status) => {
