@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArticlePresenter } from "../../Presenter/DetailArtikelPresenter";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const ArtikelTersimpan = () => {
     const [artikel, setArtikel] = useState([]);
