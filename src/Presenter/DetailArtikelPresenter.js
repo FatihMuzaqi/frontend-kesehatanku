@@ -133,6 +133,7 @@ export class ArticlePresenter {
   async simpanartikel(id, value) {
     try {
       const res = await database.createArtikel(id, value);
+      console.log(res);
     } catch (err) {
       console.error(err);
     }
@@ -141,6 +142,7 @@ export class ArticlePresenter {
   async deleteArtikel(id) {
     try {
       const res = await database.deleteArtikel(id);
+      console.log(res);
     } catch (err) {
       console.error(err);
     }
