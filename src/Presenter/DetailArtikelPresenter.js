@@ -102,9 +102,24 @@ export class ArticlePresenter {
     }
   }
 
+  async getArtikelFromIdb(id) {
+    if (!id) return;
+    try {
+      const res = database.findArtikel(id);
+      console.log(res);
+      if (res.result) {
+        return this.view.updateBookmarkStatus(true);
+      }
+      this.view.updateBookmarkStatus(false);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async handleBookmark(id, value) {
     try {
-      if (database.findArtikel(id)) {
+      const data = database.findArtikel(id);
+      if (data.result) {
         this.simpanartikel(id, value);
         return this.view.updateBookmarkStatus(true);
       }
