@@ -6,7 +6,7 @@ const OBJECT_STORE_NAME = 'artikel';
 
 const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
     upgrade: (db) => {
-        db.createObjectStore(OBJECT_STORE_NAME)
+        db.createObjectStore(OBJECT_STORE_NAME, { keyPath: "id" });
     }
 });
 
