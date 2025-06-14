@@ -72,4 +72,9 @@ export class HomeModel {
   getUserRole() {
     return "user"; 
   }
+
+  async getKategoris() {
+    const res = await instance.get('/api/kategori');
+    return res.data;
+  }
 }

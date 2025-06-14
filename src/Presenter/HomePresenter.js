@@ -104,5 +104,14 @@ export class HomePresenter {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + "...";
   }
+
+  async getKategori() {
+    try {
+      const res = this.model.getKategoris();
+      this.view.setKategoriKesehatan(res.data);
+    } catch (error) {
+      console.error('Gagal mengambil kategori:', error);
+    }
+  }
 }
 

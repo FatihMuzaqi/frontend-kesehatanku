@@ -44,12 +44,6 @@ const KonsultasiList = () => {
                                     </InputGroup>
                                 </Col>
                                 <Col md={3}>
-                                    <Form.Select>
-                                        <option value="">Filter Kategori</option>
-                                        {/* {kategoris ? kategoris.map(value => (
-                                            <option value={value.id} key={value.id}>{value.nama_kategori}</option>
-                                        )) : <></>} */}
-                                    </Form.Select>
                                 </Col>
                             </Row>
 
@@ -88,15 +82,6 @@ const KonsultasiList = () => {
                                     )) }
                                 </tbody>
                             </Table>
-
-                            <div className="d-flex justify-content-between align-items-center mt-3">
-                                <div>Menampilkan 1-5 dari 5 entries</div>
-                                <Pagination>
-                                    <Pagination.Prev disabled />
-                                    <Pagination.Item active>{1}</Pagination.Item>
-                                    <Pagination.Next disabled />
-                                </Pagination>
-                            </div>
                         </Card.Body>
                     </Card>
                 </Col>

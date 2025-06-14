@@ -94,38 +94,12 @@ const Dashboard = () => {
               <Row className="no-gutters align-items-center">
                 <Col className="mr-2">
                   <div style={{ fontWeight: 'bold' }} className=" text-info text-uppercase mb-1">
-                    Total Kunjungan
+                    Total Kategori
                   </div>
-                  <div className="h5 mb-0 font-weight-bold">#</div>
-                  <div className="mt-2 small">
-                    <span className="text-success me-2">+18%</span>
-                    <span className="text-muted">sejak bulan lalu</span>
-                  </div>
+                  <div className="h5 mb-0 font-weight-bold">{categories?.length}</div>
                 </Col>
                 <Col xs="auto">
                   <FaUser style={{ fontSize: '2rem', color: '#d1d3e2' }} />
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col lg={3} md={3} xs={3} className="mb-4">
-          <Card className="border-left-warning h-100 py-2">
-            <Card.Body>
-              <Row className="no-gutters align-items-center">
-                <Col className="mr-2">
-                  <div style={{ fontWeight: 'bold' }} className="text-warning text-uppercase mb-1">
-                    Target Bulanan
-                  </div>
-                  <div className="mb-0 font-weight-bold">#%</div>
-                  <ProgressBar now={75} variant="warning" className="mt-2" />
-                  <div className="mt-2 small text-muted">
-                    Target 2,000 pengunjung baru
-                  </div>
-                </Col>
-                <Col xs="auto">
-                  <FaChartLine style={{ fontSize: '2rem', color: '#d1d3e2' }} />
                 </Col>
               </Row>
             </Card.Body>

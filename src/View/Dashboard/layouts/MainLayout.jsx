@@ -70,9 +70,8 @@ const MainLayout = ({ children }) => {
         { path: '/dashboard/health-info/categories', icon: <FaListUl />, label: 'Kategori' }
       ]
     },
-    { path: '/dashboard/health', icon: <FaChartBar />, label: 'Cek Kesehatan' },
-    { path: '/dashboard/konsultasi', icon: <FaChartBar />, label: 'Konsultasi Penyakit' },
-    { path: '/dashboard/settings', icon: <FaCog />, label: 'Pengaturan' },
+    { path: '/dashboard/health', icon: <FaListUl />, label: 'Cek Kesehatan' },
+    { path: '/dashboard/konsultasi', icon: <FaListUl />, label: 'Konsultasi Penyakit' },
     { path: '/dashboard/profile', icon: <FaUser />, label: 'Profil' }
   ];
 
@@ -190,9 +189,6 @@ const MainLayout = ({ children }) => {
                   <Dropdown.Divider />
                   <Dropdown.Item as={Link} to="/dashboard/profile" state={{user}}>
                     <FaUser className="me-2" /> Profil
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/dashboard/settings">
-                    <FaCog className="me-2" /> Pengaturan
                   </Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={handleLogout}>
