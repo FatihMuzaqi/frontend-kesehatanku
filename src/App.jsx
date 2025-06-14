@@ -20,7 +20,6 @@ import CreateUser from "./View/Dashboard/CreateUser";
 import Categories from "./View/Dashboard/Categories";
 import UserList from "./View/Dashboard/UserList";
 import ArticleList from "./View/Dashboard/ArticleList";
-import Settings from "./View/Dashboard/Settings";
 import Analytics from "./View/Dashboard/Analytics";
 import Profile from "./View/Dashboard/Profile";
 import SetupRoleAdmin from "./SetupRoleAdmin";
@@ -29,6 +28,7 @@ import Error404 from "./View/Errors/404";
 import KesehatanList from "./View/Dashboard/KesehatanList";
 import KonsultasiList from "./View/Dashboard/KonsultasiList";
 import ArtikelTersimpan from "./View/Pages/ArtikelTersimpan";
+import Search from "./View/Pages/Search";
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
       <Route path="/cek-kesehatan/:id" element={<CekKesehatan />} />
       <Route path="/konsultasi-penyakit" element={<Konsultasi />} />
       <Route path="/artikel-tersimpan" element={<ArtikelTersimpan />} />
+      <Route path="/search/:search" element={<Search />} />
       {/* Auth */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -77,7 +78,6 @@ function App() {
         <Route path="health-info" element={<ArticleList />} />
         <Route path="health-info/create" element={<CreateArticle />} />
         <Route path="health-info/categories" element={<Categories />} />
-        <Route path="settings" element={<Settings />} />
         <Route path="health" element={<KesehatanList />} />
         <Route path="konsultasi" element={<KonsultasiList />} />
       </Route>

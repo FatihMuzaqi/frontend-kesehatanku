@@ -92,8 +92,7 @@ const UserList = () => {
                   <Form.Select onChange={hanldeFilterRole}>
                     <option value="">Filter Role</option>
                     <option value="admin">Admin</option>
-                    <option value="editor">Editor</option>
-                    <option value="contributor">Kontributor</option>
+                    <option value="contributor">User</option>
                   </Form.Select>
                 </Col>
                 <Col md={3} className="text-end">

@@ -194,20 +194,6 @@ const ArticleDetailPage = () => {
                     Link artikel berhasil disalin ke clipboard!
                   </div>
                 )}
-                {/* Tags */}
-                <div className="mt-4 pt-3 border-top">
-                  <div className="mb-2">
-                    <FaTag className="me-2 text-muted" />
-                    <strong>Tags:</strong>
-                  </div>
-                  <div className="d-flex flex-wrap gap-2">
-                    {artikel.tags && artikel.tags.map((tag, index) => (
-                      <span key={index} className="badge bg-light text-dark px-2 py-1">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

@@ -14,7 +14,6 @@ export default class NavbarComponentPresenter {
       const filterData = res.data.filter((item) =>
         ["Allergy", "Diabetes", "Malaria"].includes(item.nama_kategori)
       );
-      console.log(filterData);
       this.#view.setFilterCategories(filterData);
     } catch (err) {
       console.error(err);

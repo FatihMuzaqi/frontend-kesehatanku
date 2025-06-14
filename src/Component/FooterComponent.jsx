@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
-import axios from 'axios';
 import {
   FaFacebook,
   FaEnvelope,
@@ -11,26 +10,25 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import SubscriptionForm from './SubscriptionForm';
+import FooterPresenter from '../Presenter/FooterPresenter';
+import { HomeModel } from '../Model/modelHome';
 
 const FooterComponent = () => {
   const [kategoriKesehatan, setKategoriKesehatan] = useState([]);
+  const [filterCategories, setFilterCategories] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchKategori = async () => {
-      try {
-        const res = await axios.get('http://localhost:5000/api/kategori');
-        setKategoriKesehatan(res.data.data); // sesuaikan struktur response
-      } catch (error) {
-        console.error('Gagal mengambil kategori:', error);
-      }
-    };
+  const presenter = new FooterPresenter({
+    model: new HomeModel(),
+    view: {
+      setKategoriKesehatan: setKategoriKesehatan,
+      setFilterCategories: setFilterCategories
+    }
+  })
 
-    fetchKategori();
+  useEffect(() => {
+    presenter.getKategoris();
   }, []);
-  const handleSelect = (id) => {
-    navigate(`/cek-kesehatan/${id}`);
-  };
 
   return (
     <footer className="bg-dark text-white pt-5 pb-3">
@@ -75,48 +73,44 @@ const FooterComponent = () => {
               </li>
               <ul className="ps-0">
                 <li className="mb-2 fw-semibold text-white list-unstyled">Cek Kesehatan</li>
-                <li className="text-white" style={{ listStyleType: 'disc', marginLeft: '1.25rem' }}>
-                  <a href="#" onClick={() => handleSelect(1)} className="text-white text-decoration-none">Cacar Air</a>
-                </li>
-                <li className="text-white" style={{ listStyleType: 'disc', marginLeft: '1.25rem' }}>
-                  <a href="#" onClick={() => handleSelect(2)} className="text-white text-decoration-none">DBD</a>
-                </li>
-                <li className="text-white" style={{ listStyleType: 'disc', marginLeft: '1.25rem' }}>
-                  <a href="#" onClick={() => handleSelect(3)} className="text-white text-decoration-none">Alergi</a>
-                </li>
+                {filterCategories?.map(value => (
+                  <li className="text-white" style={{ listStyleType: 'disc', marginLeft: '1.25rem' }}>
+                    <Link to={`/cek-kesehatan/${value.id}`} className="text-white text-decoration-none">{value.nama_kategori}</Link>
+                  </li>
+                ))}
               </ul>
             </ul>
           </Col>
           <Col md={4} className="mb-4">
             <SubscriptionForm />
             <h3 className="h5 mb-3">Ikuti Kami</h3>
-              <div className="d-flex justify-content-between">
-                    <Button variant="outline-light" className="rounded-circle p-2">
-                      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                        <FaFacebook />
-                      </a>
-                    </Button>
-                    <Button variant="outline-light" className="rounded-circle p-2">
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                        <FaTwitter />
-                      </a>
-                    </Button>
-                    <Button variant="outline-light" className="rounded-circle p-2">
-                      <a href="https://wa.me/085713296692" target="_blank" rel="noopener noreferrer">
-                        <FaWhatsapp />
-                      </a>
-                    </Button>
-                    <Button variant="outline-light" className="rounded-circle p-2">
-                      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                        <FaInstagram />
-                      </a>
-                    </Button>
-                    <Button variant="outline-light" className="rounded-circle p-2">
-                      <a href="mailto:kesehatanku@gmail.com" target="_blank" rel="noopener noreferrer">
-                        <FaEnvelope />
-                      </a>
-                    </Button>
-              </div>
+            <div className="d-flex justify-content-between">
+              <Button variant="outline-light" className="rounded-circle p-2">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                  <FaFacebook />
+                </a>
+              </Button>
+              <Button variant="outline-light" className="rounded-circle p-2">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter />
+                </a>
+              </Button>
+              <Button variant="outline-light" className="rounded-circle p-2">
+                <a href="https://wa.me/085713296692" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp />
+                </a>
+              </Button>
+              <Button variant="outline-light" className="rounded-circle p-2">
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram />
+                </a>
+              </Button>
+              <Button variant="outline-light" className="rounded-circle p-2">
+                <a href="mailto:kesehatanku@gmail.com" target="_blank" rel="noopener noreferrer">
+                  <FaEnvelope />
+                </a>
+              </Button>
+            </div>
           </Col>
         </Row>
         <hr />
@@ -132,7 +126,7 @@ const FooterComponent = () => {
     </footer>
   );
 };
-      <style jsx>{`
+<style jsx>{`
         .bg-gradient {
           background: linear-gradient(135deg, #1573b7 10%, #0c54b7 90%) !important;
         }

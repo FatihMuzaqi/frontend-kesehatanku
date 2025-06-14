@@ -83,10 +83,7 @@ const CreateArticle = () => {
                   <Col md={6}>
                     <Form.Group className="mb-3">
                       <Form.Label>Author</Form.Label>
-                      <Form.Control type="text" placeholder="Tag1, Tag2, Tag3" defaultValue={getArticle !== null ? getArticle.author : null} onChange={(e) => setAuthor(e.target.value)} required={editId ? false : true} />
-                      <Form.Text className="text-muted">
-                        Pisahkan tag dengan koma
-                      </Form.Text>
+                      <Form.Control type="text" placeholder="masukan Author" defaultValue={getArticle !== null ? getArticle.author : null} onChange={(e) => setAuthor(e.target.value)} required={editId ? false : true} />
                     </Form.Group>
                   </Col>
                 </Row>

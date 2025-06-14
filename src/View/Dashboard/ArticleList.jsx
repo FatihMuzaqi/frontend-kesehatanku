@@ -72,12 +72,6 @@ const ArticleList = () => {
                   </Form.Select>
                 </Col>
                 <Col md={2}>
-                  <Form.Select>
-                    <option value="">Status</option>
-                    <option value="published">Published</option>
-                    <option value="draft">Draft</option>
-                    <option value="review">Review</option>
-                  </Form.Select>
                 </Col>
                 <Col md={2} className="text-end">
                   <Button variant="primary" href="/dashboard/health-info/create">
@@ -141,14 +135,6 @@ const ArticleList = () => {
                 </tbody>
               </Table>
               
-              <div className="d-flex justify-content-between align-items-center mt-3">
-                <div>Menampilkan 1-5 dari 5 entries</div>
-                <Pagination>
-                  <Pagination.Prev disabled />
-                  <Pagination.Item active>{1}</Pagination.Item>
-                  <Pagination.Next disabled />
-                </Pagination>
-              </div>
             </Card.Body>
           </Card>
         </Col>

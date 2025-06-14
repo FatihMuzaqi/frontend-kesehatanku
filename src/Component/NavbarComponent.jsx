@@ -23,11 +23,13 @@ import {
 } from "react-icons/fa";
 import NavbarComponentPresenter from "../Presenter/NavbarComponentPresenter";
 import Dashboard from "../Model/modelDashboard";
+import { TbSettingsSearch } from "react-icons/tb";
 
 const NavbarComponent = () => {
   const [user, setUser] = useState(null);
   const [categoires, setCategories] = useState(null);
   const [filterCategories, setFilterCategories] = useState(null);
+  const [search, setSearch] = useState(null);
   const navigate = useNavigate();
 
 
@@ -48,6 +50,11 @@ const NavbarComponent = () => {
   function handleArtikelTersimpan() {
     navigate("/artikel-tersimpan");
   }
+
+  function submitSearch(e) {
+    e.preventDefault();
+    navigate(`/search/${search}`)
+  };
 
   useEffect(() => {
     presenter.getKategori();
@@ -134,14 +141,15 @@ const NavbarComponent = () => {
           </Nav>
 
           <div className="d-flex align-items-center mx-auto text-center justify-content-center">
-            <Form className="d-flex me-3 d-none d-sm-block">
+            <Form onSubmit={submitSearch} className="d-flex me-3 d-none d-sm-block">
               <InputGroup>
                 <Form.Control
                   type="search"
                   placeholder="Cari informasi kesehatan..."
                   aria-label="Search"
+                  onChange={(e) => setSearch(e.target.value)}
                 />
-                <Button variant="primary">
+                <Button type="submit" variant="primary">
                   <FaSearch />
                 </Button>
               </InputGroup>
@@ -160,7 +168,7 @@ const NavbarComponent = () => {
                     <h6>{user?.name}</h6>
                   </div>
                   <Dropdown.Item onClick={handleArtikelTersimpan}>
-                    <FaSignOutAlt className="me-2" /> Artikel Tersimpan
+                    Artikel Tersimpan
                   </Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>
                     <FaSignOutAlt className="me-2" /> Keluar

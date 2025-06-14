@@ -423,7 +423,7 @@ function HomeView() {
         </Container>
       </div>
       {/* Footer */}
-      <FooterComponent />
+      <FooterComponent kategoris={state.kategoriKesehatan} />
 
       <style jsx>{`
         .bg-gradient {
