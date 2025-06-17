@@ -13,6 +13,9 @@ export default class SearchPresenter {
         this.#view.setLoading(true);
         try {
             const res = await this.#model.getArticle();
+            if (!search) {
+                this.#view.setArtikel(res.data);
+            }
             const filterData = res.data.filter(item =>
                 item.judul.toLowerCase().includes(search.toLowerCase())
             );

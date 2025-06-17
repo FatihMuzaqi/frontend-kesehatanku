@@ -26,28 +26,23 @@ export default class DashboardPresenter {
       const resCategories = await this.#model.Dashboard.getKategori();
       this.#view.setCategories(resCategories.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 
   TotalPresentaseUsers(users) {
-
     const nowDate = new Date();
-    console.log(nowDate.getMonth() - 1);
     let priceNowMount = 0;
     let priceOldMount = 0;
     for (const user of users) {
       let oldDate = new Date(user.createdAt);
-      if (nowDate.getFullYear() === oldDate.getFullYear() && nowDate.getMonth() === oldDate.getMonth()) {
+      if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 1) === oldDate.getMonth()) {
         priceNowMount += 1;
       }
-      if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 1) === oldDate.getMonth()) {
+      if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 2) === oldDate.getMonth()) {
         priceOldMount += 1;
       }
     }
-
-    console.log("Ini Price Now:" + priceNowMount);
-    console.log("Ini Price old:" + priceOldMount);
     if (priceNowMount === 0 || priceOldMount === 0) return;
 
     const presentase = ((priceNowMount - priceOldMount) / priceOldMount) * 100;
@@ -57,22 +52,17 @@ export default class DashboardPresenter {
   TotalPresentaseArticles(articles) {
 
     const nowDate = new Date();
-    console.log(nowDate.getMonth() - 1);
     let priceNowMount = 0;
     let priceOldMount = 0;
     for (const article of articles) {
       let oldDate = new Date(article.createdAt);
-      console.log(oldDate.getMonth())
-      if (nowDate.getFullYear() === oldDate.getFullYear() && nowDate.getMonth() === oldDate.getMonth()) {
+      if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 1) === oldDate.getMonth()) {
         priceNowMount += 1;
       }
-      if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 1) === oldDate.getMonth()) {
+      if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 2) === oldDate.getMonth()) {
         priceOldMount += 1;
       }
     }
-
-    console.log("Ini Price Now:" + priceNowMount);
-    console.log("Ini Price old:" + priceOldMount);
     if (priceNowMount === 0 || priceOldMount === 0) return;
 
     const presentase = ((priceNowMount - priceOldMount) / priceOldMount) * 100;

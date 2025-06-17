@@ -65,7 +65,7 @@ export default class CategoriPresenter {
             const res = await this.#model.deleteKategori(id);
             if (res.status === "success") {
                 await this.getKategori();
-                console.log("Berhasil Menghapus kategori");
+                alert("Berhasil Menghapus kategori");
             }
         } catch (err) {
             console.error(err);

@@ -12,7 +12,7 @@ export default class CreateUserPresenter {
     async createUser(name, email, password, confirmPassword) {
 
         if (!(name || email || password || confirmPassword)) {
-            console.log("mohon untuk mengisi");
+            alert("mohon untuk mengisi name, email, password, dan confirm password");
             return;
         }
         if (password !== confirmPassword) {

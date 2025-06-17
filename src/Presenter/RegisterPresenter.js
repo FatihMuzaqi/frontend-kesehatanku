@@ -31,7 +31,7 @@ export default class RegisterPresenter {
                 this.#view.navigate("/login");
             }
         } catch (err) {
-            console.log(err);
+            console.error(err);
             this.#view.setMessage(err.message);
         } finally {
             this.#view.setLoading(false);

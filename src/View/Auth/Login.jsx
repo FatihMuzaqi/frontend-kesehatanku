@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
 import Users from "../../Model/users";
 import LoadingBerputar from "../../Animation Loading/LoadingBerputar";
 import { Link, useNavigate } from "react-router";
 import LoginPresenter from "../../Presenter/LoginPresenter";
+import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
 
 export default function Login() {
 
@@ -12,6 +13,8 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [LoadingButton, setLoadingButton] = useState(false);
+    const [responseMessage, setResponseMessage] = useState(null);
+    const [checked, setChecked] = useState(false);
 
     const presenter = new LoginPresenter({
         model: Users,
@@ -19,14 +22,24 @@ export default function Login() {
             setEmail: setEmail,
             setPassword: setPassword,
             setLoadingButton: setLoadingButton,
-            navigate: navigate
+            navigate: navigate,
+            setResponseMessage: setResponseMessage,
+            setChecked: setChecked
         }
     });
 
     function submit(e) {
         e.preventDefault();
-        presenter.Login(email, password);
+        presenter.Login(email, password, checked);
     }
+
+    useEffect(() => {
+        if (localStorage.getItem("checked")) {
+            setChecked(localStorage.getItem("checked"));
+            setEmail(localStorage.getItem("email"));
+            setPassword(localStorage.getItem("password"));
+        }
+    }, []);
 
     return (
         <>
@@ -40,21 +53,31 @@ export default function Login() {
                             <h3 className="m-0">Selamat datang kembali!</h3>
                             <span className="fs-15px color-span">Masuk untuk melanjutkan akses informasi kesehatan Anda dengan mudah</span>
                         </div>
+                        {responseMessage && responseMessage.status === "success" ?
+                            <div className="d-flex flex-column align-items-center justify-content-center text-success gap-1">
+                                <FaCircleCheck className="fs-5" />
+                                <span>{responseMessage?.message}</span>
+                            </div> : <></>}
                         <form onSubmit={submit}>
                             <div className="mb-20px">
                                 <label htmlFor="email">Email Address</label>
-                                <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} id="email" placeholder="email@gmail.com" className="d-block w-100 p-8px pi-15 rounded-20px mb-5px border border-0 outline-1" disabled={LoadingButton} />
+                                <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} id="email" placeholder="email@gmail.com" value={email} className="d-block w-100 p-8px pi-15 rounded-20px mb-5px border border-0 outline-1" disabled={LoadingButton} required />
+                                {responseMessage && responseMessage.status !== "success" ?
+                                    <div className="d-flex align-items-center gap-2 text-danger">
+                                        <FaCircleExclamation />
+                                        <span>{responseMessage?.message}</span>
+                                    </div> : <></>}
                             </div>
                             <div className="mb-20px">
                                 <label htmlFor="password">Password</label>
-                                <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="********" className="d-block w-100 p-8px pi-15 rounded-20px mb-5px border border-0 outline-1" disabled={LoadingButton} />
+                                <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="********" value={password} className="d-block w-100 p-8px pi-15 rounded-20px mb-5px border border-0 outline-1" disabled={LoadingButton} />
                             </div>
-                            <div className="group-checked">
-                                <input type="checkbox" name="" id="" />
+                            <div className="group-checked d-flex items-center gap-2">
+                                <input type="checkbox" name="save" id="save" onChange={(e) => setChecked(e.target.checked)} checked={checked} />
                                 <span>Keep me logged in</span>
                             </div>
                             <Button type="submit" variant="primary" className="w-100 d-flex align-items-center justify-content-center text-light mb-20px rounded border p-8px" disabled={LoadingButton}>
-                                { LoadingButton ? <LoadingBerputar wdith={20} hiegth={20}/> : <><span>Login</span></> }
+                                {LoadingButton ? <LoadingBerputar wdith={20} hiegth={20} /> : <><span>Login</span></>}
                             </Button>
                             <div className="text-center mb-10px">
                                 <span>Don't have account? <a href="/register">Sign Up</a></span>
