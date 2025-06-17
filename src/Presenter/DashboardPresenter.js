@@ -26,7 +26,7 @@ export default class DashboardPresenter {
       const resCategories = await this.#model.Dashboard.getKategori();
       this.#view.setCategories(resCategories.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 
@@ -46,7 +46,6 @@ export default class DashboardPresenter {
     if (priceNowMount === 0 || priceOldMount === 0) return;
 
     const presentase = ((priceNowMount - priceOldMount) / priceOldMount) * 100;
-    console.log(presentase);
     this.#view.setPresentaseUsers(parseInt(presentase));
   }
 
@@ -57,7 +56,6 @@ export default class DashboardPresenter {
     let priceOldMount = 0;
     for (const article of articles) {
       let oldDate = new Date(article.createdAt);
-      console.log(oldDate.getMonth())
       if (nowDate.getFullYear() === oldDate.getFullYear() && (nowDate.getMonth() - 1) === oldDate.getMonth()) {
         priceNowMount += 1;
       }

@@ -68,7 +68,6 @@ export class ArticlePresenter {
       const user = await this.model.getUser();
       this.view.setUser(user.user);
       await this.getLike(user.user.userID, artikel_id);
-      console.log(user.user);
     } catch (err) {
       console.log("user belum login");
     }
@@ -95,7 +94,6 @@ export class ArticlePresenter {
   async getLikes(id) {
     try {
       const res = await this.model.getLikes(id);
-      console.log(res);
       this.view.setLikes(res.data);
     } catch (err) {
       console.error(err);
@@ -106,7 +104,6 @@ export class ArticlePresenter {
     if (!id) return;
     try {
       const res = await database.findArtikel(id);
-      console.log(res);
       if (res) {
         return this.view.updateBookmarkStatus(true);
       }
@@ -136,7 +133,6 @@ export class ArticlePresenter {
   async simpanartikel(id, value) {
     try {
       const res = await database.createArtikel(id, value);
-      console.log(res);
     } catch (err) {
       console.error(err);
     }
@@ -145,7 +141,6 @@ export class ArticlePresenter {
   async deleteArtikel(id) {
     try {
       const res = await database.deleteArtikel(id);
-      console.log(res);
     } catch (err) {
       console.error(err);
     }

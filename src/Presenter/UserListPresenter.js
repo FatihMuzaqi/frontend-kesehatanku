@@ -12,7 +12,6 @@ export default class UserListPresenter {
         this.#view.setLoading(true);
         try {
             const res = await this.#model.getUsers();
-            console.log(res);
             if (res.status === "success") {
                 this.#view.setUsers(res.data);
                 this.#view.setRenderUsers(res.data);
@@ -34,7 +33,6 @@ export default class UserListPresenter {
         try {
             const res = await this.#model.deleteUser(id);
             await this.getUsers();
-            console.log(res);
         } catch (err) {
             console.error(err);
         }

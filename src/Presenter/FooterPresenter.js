@@ -12,7 +12,6 @@ export default class FooterPresenter {
     async getKategoris() {
         try {
             const res = await this.#model.getKategoris();
-            console.log(res);
             this.#view.setKategoriKesehatan(res.data);
             const filterData = res.data.filter((item) =>
                 ["Allergy", "Diabetes", "Malaria"].includes(item.nama_kategori)
