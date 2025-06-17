@@ -54,7 +54,7 @@ const Dashboard = () => {
                   </div>
                   <div className="h5 mb-0 font-weight-bold">{users !== null ? users.length : 0}</div>
                   <div className="mt-2 small">
-                    <span className="text-success me-2">+{presentaseUsers}%</span>
+                    <span className="text-success me-2">{presentaseUsers > -1 ? `+${presentaseUsers}`: `-${presentaseUsers}`}%</span>
                     <span className="text-muted">sejak bulan lalu</span>
                   </div>
                 </Col>
@@ -76,7 +76,7 @@ const Dashboard = () => {
                   </div>
                   <div className="h5 mb-0 font-weight-bold">{articles ? articles.length : 0}</div>
                   <div className="mt-2 small">
-                    <span className="text-success me-2">+{presentaseArticles}%</span>
+                    <span className="text-success me-2">{presentaseArticles > -1 ? `+${presentaseArticles}`: `-${presentaseArticles}`}%</span>
                     <span className="text-muted">sejak bulan lalu</span>
                   </div>
                 </Col>
